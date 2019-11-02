@@ -1,6 +1,7 @@
 '''
 Modules to manipulate data
 '''
+import time
 import numpy as np
 import pandas as pd
 from rest_client import API_client
@@ -80,7 +81,7 @@ def loc_data(df):
 	    else:
 	        lc.append(np.nan)
 
-	df['neighbourhood'] = lc.tolist()
+	df['neighbourhood'] = lc
 
 	return df
 
