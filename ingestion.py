@@ -12,9 +12,12 @@ def push_data(data, cb_conn, thread_id):
     # Creating key using thread name
     bulk_data = dict()
     for index, doc in enumerate(data):
-        doc_id = 'k' + str(index) + '_' + thread_id
-        bulk_data[doc_id] = doc
-        
+    	if 'case_number' in doc:
+    		# Hardcoded ID, as model requires this as doc-id
+    		doc_id = doc.get('case_number')
+    	else:
+    		doc_id = 'k' + str(index) + '_' + thread_id
+    	bulk_data[doc_id] = doc
     try:
     	# Bulk uploading of documents
         cb_conn.upsert_multi(bulk_data)

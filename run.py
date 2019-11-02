@@ -56,6 +56,22 @@ def data_analysis(csv_dump_path, bq_id):
 		time_data_analysis(crime_data)
 	elif bq_id == '2':
 		arrest_analysis(crime_data)
+	elif bq_id == '3':
+		count_per_year_analysis(crime_data)
+	elif bq_id == '4':
+		max_arrests(crime_data)
+	elif bq_id == '5':
+		crime_distribution_by_year(crime_data)
+	elif bq_id == '6':
+		unsafe_neighbourhood(crime_data)
+	elif bq_id == '7':
+		# One hot encoding, each column is a crime type
+		x_test = np.array([[1, 0, 0, 0, 0, 0, 0, 0, 
+							0, 0, 0, 0, 0, 0, 0, 0, 
+							0, 0, 0, 0, 0, 0, 0, 0, 0, 
+							0, 0, 0, 0, 0, 0, 0, 0, 0,0]], np.int32)
+		crime_type_prediction(crime_data, x_test)
+
 	else:
 		print ('Unknown business question ID.')
 
